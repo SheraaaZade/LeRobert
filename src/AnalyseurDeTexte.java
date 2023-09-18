@@ -23,6 +23,12 @@ public class AnalyseurDeTexte {
         }
     }
 
+    public void endObservers(){
+        for (Observer observer : observerCollection) {
+            observer.traiterLigne();
+        }
+    }
+
     public void readFile(String file) {
         BufferedReader lecteurAvecBuffer = null;
         try {

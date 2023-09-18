@@ -25,11 +25,7 @@ public class Main {
 //            }
 //
 //        }
-        lecteurAvecBuffer.close();
+       // lecteurAvecBuffer.close();
 
-        System.out.println("Il y avait " + nbrLignes + " lignes.");
-        System.out.println("Il y avait " + nbrMots + " mots.");
-        System.out.println("Il y avait " + nbrPalindromes + " palindromes.");
-        System.out.println("Il y avait " + nbrBelgique + " lignes contenant Belgique.");
     }
 }

@@ -6,4 +6,9 @@ public class NbMots implements Observer{
             cpt++;
         }
     }
+
+    @Override
+    public void traiterLigne() {
+        System.out.println("Il y avait " + cpt + " mots.");
+    }
 }

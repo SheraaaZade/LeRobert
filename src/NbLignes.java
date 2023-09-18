@@ -4,4 +4,9 @@ public class NbLignes implements Observer{
     public void traiterLigne(String s) {
         cpt++;
     }
+
+    @Override
+    public void traiterLigne() {
+        System.out.println("Il y avait " + cpt + " lignes.");
+    }
 }

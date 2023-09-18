@@ -9,4 +9,9 @@ public class Palindrome implements Observer{
             }
         }
     }
+
+    @Override
+    public void traiterLigne() {
+        System.out.println("Il y avait " + cpt + " palindromes.");
+    }
 }
