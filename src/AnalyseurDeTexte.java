@@ -23,9 +23,9 @@ public class AnalyseurDeTexte {
         }
     }
 
-    public void endObservers(){
+    public void endObservers() {
         for (Observer observer : observerCollection) {
-            observer.traiterLigne();
+            observer.finFichier();
         }
     }
 
@@ -38,36 +38,18 @@ public class AnalyseurDeTexte {
         }
         String ligne;
 
-        NbLignes nbLignes = new NbLignes();
-        NbBelgique nbBelgique = new NbBelgique();
-        NbMots nbMots = new NbMots();
-        Palindrome nbrPalindromes = new Palindrome();
+        try {
+            while ((ligne = lecteurAvecBuffer.readLine()) != null) {
+                for (Observer observer : observerCollection) {
+                    observer.traiterLigne(ligne);
+                }
 
-        while (true) {
-            try {
-                if (!((ligne = lecteurAvecBuffer.readLine()) != null)) break;
-                //nbrLignes++;
-                nbLignes.traiterLigne(ligne);
-                if (ligne.contains("Belgique")) {
-                    //nbrBelgique++;
-                    nbBelgique.traiterLigne(ligne);
-                }
-                for (String mot : ligne.trim().split(" ")) {
-                    // nbrMots++;
-                    nbMots.traiterLigne(ligne);
-                    StringBuffer temp = new StringBuffer(mot);
-                    if (mot.equals(temp.reverse().toString())) {
-                        //nbrPalindromes++;
-                        nbrPalindromes.traiterLigne(ligne);
-                    }
-                }
-            } catch (IOException e) {
-                throw new RuntimeException(e);
             }
-
+            for (Observer o:observerCollection){
+                o.finFichier();
+            }
+        } catch (IOException e) {
+            throw new RuntimeException(e);
         }
     }
 }
-
-//SHERA LA PLUS MOCHE T MOCHE T MOCHE NNNANANANANNANAAAAAAAAAAAAAAAAAAAAAAA
-//OOUUUUUUUUUUH LA THEIERE A LA BOITE DE PANDORE QUI LUI SERT DE BOUUUUCHEUH

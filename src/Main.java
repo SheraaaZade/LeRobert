@@ -1,31 +1,17 @@
-import java.io.BufferedReader;
-import java.io.IOException;
-
 public class Main {
-    public static void main(String[] args) throws IOException {
-        BufferedReader lecteurAvecBuffer = null;
-        String ligne;
-        int nbrMots = 0, nbrLignes = 0, nbrPalindromes = 0, nbrBelgique = 0;
-//        try {
-//            lecteurAvecBuffer = new BufferedReader(new FileReader(args[0]));
-//        } catch (FileNotFoundException e) {
-//            System.out.println("Erreur d'ouverture");
-//        }
-//        while ((ligne = lecteurAvecBuffer.readLine()) != null) {
-//            nbrLignes++;
-//            if (ligne.contains("Belgique")) {
-//                nbrBelgique++;
-//            }
-//            for (String mot : ligne.trim().split(" ")) {
-//                nbrMots++;
-//                StringBuffer temp = new StringBuffer(mot);
-//                if (mot.equals(temp.reverse().toString())) {
-//                    nbrPalindromes++;
-//                }
-//            }
-//
-//        }
-       // lecteurAvecBuffer.close();
+    public static void main(String[] args) {
 
+        NbLignes nbLignes = new NbLignes();
+        NbBelgique nbBelgique = new NbBelgique();
+        NbMots nbMots = new NbMots();
+        Palindrome nbrPalindromes = new Palindrome();
+
+        AnalyseurDeTexte analyseurDeTexte = new AnalyseurDeTexte();
+        analyseurDeTexte.registerObserver(nbLignes);
+        analyseurDeTexte.registerObserver(nbBelgique);
+        analyseurDeTexte.registerObserver(nbMots);
+        analyseurDeTexte.registerObserver(nbrPalindromes);
+
+        analyseurDeTexte.readFile(args[0]);
     }
 }
